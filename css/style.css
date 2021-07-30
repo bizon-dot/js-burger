@@ -1,0 +1,14 @@
+
+#navbar {
+   
+    background-color: #FDBB40;
+}
+
+.img-box{
+    height: 130px;
+    
+}
+
+.img-box > img {
+    height: 100%;
+}
