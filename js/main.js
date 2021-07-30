@@ -2,8 +2,11 @@ let btn_GenerateBurger = document.getElementById("btn-generate-burger");
 btn_GenerateBurger.addEventListener('click',
     function () {
         let user_burger = burgerComposition();
-        //console.log(user_burger);
-        calculatePriceBurger(user_burger)
+        
+        console.log(user_burger);
+        let priceBurger = calculatePriceBurger(user_burger);
+        let priceBanner = bannerPrice(priceBurger);
+
     })
 
 /*  
@@ -26,6 +29,12 @@ function burgerComposition() {
 
     }
 
+    // Tengo solamente le proprietà true in modo da evitare controlli successivi
+    for (let ingredient in user_burger) {
+       if (user_burger[ingredient] == false) {
+           delete user_burger[ingredient];
+       }
+    }
     return user_burger;
 }
 
@@ -47,24 +56,61 @@ function calculatePriceBurger(user_burger) {
 
     var priceBaseBurger = 320;
 
+
+    /*
+        CONTROLLO QUALI INGREDIENTI SONO STATI SELEZIONATI 
+                            DEPRECATA 
+
     // Ritorna gli ingredienti selezionati
-    var keys = Object.keys(user_burger);
-    var ingredients = keys.filter(function (key) {
-        return user_burger[key]
-    });
-    if (ingredients[0] == "burgerName") {
-        ingredients.shift();
-    }
-    console.log(ingredients);
+    // var keys = Object.keys(user_burger);
+    // var ingredients = keys.filter(function (key) {
+    //     return user_burger[key]
+    // });
+
+    // Controllo che non sia presente anche la proprietà "burgerName"
+     // for( var i = 0; i < ingredients.length; i++){ 
+    //     if ( ingredients[i] === "burgerName") { 
+    //         ingredients.splice(i, 1); 
+    //     }
+    
+    // }
+    */
+   
     let price = 0;
-    ingredients.forEach( function(ingredient){
-        let index = ingredient.toString();
-        price  += priceAddonBurger[ingredient];
-        return price;
+
+    /*      
+                FUNZIONE CALCOLA PREZZO 
+                    DEPRECATA 
+
+    // user_burger.forEach( function(ingredient){
+    //     let index = ingredient.toString();
+    //     price  += priceAddonBurger[ingredient];
+    //     return price;
         
         
-    });
+    // });
+    */
+    for (let ingredient in user_burger) {
+        if (ingredient != "burgerName") {
+            price += priceAddonBurger[ingredient];
+        }
+        
+    }
     price = (price + priceBaseBurger) / 100;
     return price;
 
+}
+
+/*  
+    =======================================================================================================
+        3.                              Creazione banner contenente il prezzo 
+    =======================================================================================================
+    
+*/
+
+function bannerPrice(price){
+    
+    let templateBox = document.getElementById("box-price");
+    templateBox.innerHTML += `Price: ${price}`;
+    return true;
 }
