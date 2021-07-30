@@ -1,11 +1,12 @@
 let btn_GenerateBurger = document.getElementById("btn-generate-burger");
 btn_GenerateBurger.addEventListener('click',
     function () {
+        // Creo un oggetto contenete il nome del panino, la sua composizione, l'utilizzo o meno del coupon 
+        // e il prezzo
         let user_burger = burgerComposition();
+    
+        // Stampo nel DOM il banner con il prezzo 
         
-        console.log(user_burger);
-        let priceBurger = calculatePriceBurger(user_burger);
-        let priceBanner = bannerPrice(priceBurger);
 
     })
 
@@ -31,10 +32,14 @@ function burgerComposition() {
 
     // Tengo solamente le proprietà true in modo da evitare controlli successivi
     for (let ingredient in user_burger) {
-       if (user_burger[ingredient] == false) {
-           delete user_burger[ingredient];
-       }
+        if (user_burger[ingredient] == false) {
+            delete user_burger[ingredient];
+        }
     }
+    // Calcolo e e aggiungo il prezzo del panino all'oggetto
+    let price = calculatePriceBurger(user_burger);
+    user_burger["price"] = price;
+
     return user_burger;
 }
 
@@ -52,14 +57,62 @@ function calculatePriceBurger(user_burger) {
         tomato: 20,
         lettuce: 20,
         ketchup: 10,
+        priceBaseBurger: 320,
     }
+    // Calcolo il prezzo in base agli ingredienti contenuti in user_burger
+    let price = 0;
+    for (let ingredient in user_burger) {
+        // Escludo la proprietà contenente il nome del panino
+        if (ingredient != "burgerName") {
+            price += priceAddonBurger[ingredient];
+        }
 
-    var priceBaseBurger = 320;
+    }
+    price = (price + priceAddonBurger.priceBaseBurger) / 100;
+    return price;
+
+}
+
+/*  
+    =======================================================================================================
+        3.                              Creazione banner contenente il prezzo 
+    =======================================================================================================
+    
+*/
+
+function bannerPrice(price) {
+
+    let templateBox = document.getElementById("box-price");
+    templateBox.innerHTML += `Price: ${price}`;
+    return true;
+}
 
 
-    /*
-        CONTROLLO QUALI INGREDIENTI SONO STATI SELEZIONATI 
-                            DEPRECATA 
+/*  
+    =======================================================================================================
+                                            FUNZIONI DEPRECATE 
+    =======================================================================================================
+    
+*/
+
+
+
+/*      
+    ==           FUNZIONE CALCOLA PREZZO 
+                   DEPRECATA                ==
+
+   // user_burger.forEach( function(ingredient){
+   //     let index = ingredient.toString();
+   //     price  += priceAddonBurger[ingredient];
+   //     return price;
+       
+       
+   // });
+   */
+
+/*
+    ==    CONTROLLO QUALI INGREDIENTI SONO STATI SELEZIONATI 
+                            DEPRECATA           ==
 
     // Ritorna gli ingredienti selezionati
     // var keys = Object.keys(user_burger);
@@ -75,42 +128,3 @@ function calculatePriceBurger(user_burger) {
     
     // }
     */
-   
-    let price = 0;
-
-    /*      
-                FUNZIONE CALCOLA PREZZO 
-                    DEPRECATA 
-
-    // user_burger.forEach( function(ingredient){
-    //     let index = ingredient.toString();
-    //     price  += priceAddonBurger[ingredient];
-    //     return price;
-        
-        
-    // });
-    */
-    for (let ingredient in user_burger) {
-        if (ingredient != "burgerName") {
-            price += priceAddonBurger[ingredient];
-        }
-        
-    }
-    price = (price + priceBaseBurger) / 100;
-    return price;
-
-}
-
-/*  
-    =======================================================================================================
-        3.                              Creazione banner contenente il prezzo 
-    =======================================================================================================
-    
-*/
-
-function bannerPrice(price){
-    
-    let templateBox = document.getElementById("box-price");
-    templateBox.innerHTML += `Price: ${price}`;
-    return true;
-}
