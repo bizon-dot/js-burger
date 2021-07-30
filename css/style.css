@@ -1,14 +1,40 @@
+/* Generali */
 
+ul {
+    list-style:none;
+}
+
+
+/* /Generali */
+
+/*  Navbar */
 #navbar {
    
     background-color: #FDBB40;
 }
 
-.img-box{
+#navbar .img-box{
     height: 130px;
     
 }
 
-.img-box > img {
+#navbar .img-box > img {
     height: 100%;
 }
+
+/*  /Navbar */
+
+/* Form - Name Burger */
+
+input[type=text]{
+    border:0;
+}
+
+#input-burger-name::placeholder{
+    color: grey;
+    font-size: 25px;
+
+}
+
+/* /Form - Name Burger */
+
