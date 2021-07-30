@@ -19,6 +19,7 @@ btn_GenerateBurger.addEventListener('click',
 */
 
 function burgerComposition() {
+    // Popolo l'oggetto con i vari input presi dal form 
     var user_burger = {
         burgerName: document.getElementById("input-burger-name").value,
         chesse: document.getElementById("chesse").checked,
@@ -36,7 +37,8 @@ function burgerComposition() {
             delete user_burger[ingredient];
         }
     }
-    // Calcolo e e aggiungo il prezzo del panino all'oggetto
+    // Calcolo e e aggiungo il prezzo del panino all'oggetto tenendo conto dell'
+    //  eventuale sconto
     let price = calculatePriceBurger(user_burger);
     user_burger["price"] = price;
 
@@ -62,17 +64,19 @@ function calculatePriceBurger(user_burger) {
     // Calcolo il prezzo in base agli ingredienti contenuti in user_burger
     let price = 0;
     for (let ingredient in user_burger) {
-        // Escludo la proprietà contenente il nome del panino
-        if (ingredient != "burgerName") {
+        // Escludo tutte le proprietà non numeriche dalla somma 
+        if (!(isNaN(user_burger[ingredient]))) {
             price += priceAddonBurger[ingredient];
         }
 
     }
     price = (price + priceAddonBurger.priceBaseBurger) / 100;
     // Nel caso il codice scount sia palindromo applico uno sconto del 20%
-    if (isPalindrome(user_burger.coupon)) {
-        price = price * 0.8;
-    }
+    // TODO: DA FIXARE
+    // if (isPalindrome(user_burger.coupon)) {
+    //     price = price * 0.8;
+    // }
+    console.log(price);
     return price;
 
 }
