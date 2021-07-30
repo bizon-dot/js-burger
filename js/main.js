@@ -69,6 +69,10 @@ function calculatePriceBurger(user_burger) {
 
     }
     price = (price + priceAddonBurger.priceBaseBurger) / 100;
+    // Nel caso il codice scount sia palindromo applico uno sconto del 20%
+    if (isPalindrome(user_burger.coupon)) {
+        price = price * 0.8;
+    }
     return price;
 
 }
@@ -85,6 +89,19 @@ function bannerPrice(price) {
     let templateBox = document.getElementById("box-price");
     templateBox.innerHTML += `Price: ${price}`;
     return true;
+}
+
+/*  
+    =======================================================================================================
+        4.                              Torna true se il discount code è palindromo
+    =======================================================================================================
+    
+*/
+function isPalindrome(code){
+    var re = /[\W_]/g;
+    var lowRegStr = str.toLowerCase().replace(re, '');
+    var reverseStr = lowRegStr.split('').reverse().join(''); 
+    return reverseStr === lowRegStr;
 }
 
 
