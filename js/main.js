@@ -4,9 +4,9 @@ btn_GenerateBurger.addEventListener('click',
         // Creo un oggetto contenete il nome del panino, la sua composizione, l'utilizzo o meno del coupon 
         // e il prezzo
         let user_burger = burgerComposition();
-    
+
         // Stampo nel DOM il banner con il prezzo 
-        
+
 
     })
 
@@ -61,22 +61,23 @@ function calculatePriceBurger(user_burger) {
         ketchup: 10,
         priceBaseBurger: 320,
     }
+
     // Calcolo il prezzo in base agli ingredienti contenuti in user_burger
     let price = 0;
     for (let ingredient in user_burger) {
-        // Escludo tutte le proprietà non numeriche dalla somma 
+        // Escludo tutte le proprietà non numeriche dell'oggetto dalla somma 
         if (!(isNaN(user_burger[ingredient]))) {
             price += priceAddonBurger[ingredient];
         }
 
     }
     price = (price + priceAddonBurger.priceBaseBurger) / 100;
-    // Nel caso il codice scount sia palindromo applico uno sconto del 20%
-    // TODO: DA FIXARE
-    // if (isPalindrome(user_burger.coupon)) {
-    //     price = price * 0.8;
-    // }
-    console.log(price);
+    // Nel caso il codice sconto sia un numerop palindromo applico uno sconto del 20%
+    if (isPalindrome(user_burger.coupon)) {
+        price = price * 0.8;
+      
+    }
+
     return price;
 
 }
@@ -101,11 +102,12 @@ function bannerPrice(price) {
     =======================================================================================================
     
 */
-function isPalindrome(code){
-    var re = /[\W_]/g;
-    var lowRegStr = str.toLowerCase().replace(re, '');
-    var reverseStr = lowRegStr.split('').reverse().join(''); 
-    return reverseStr === lowRegStr;
+// Strip i caratteri alfanumerici e rendo tutto minuscolo
+const clean = (str) => str.toString().toLowerCase().replace(/[\W_]/g, '');
+function isPalindrome(str) {
+    var clearStr = clean(str);
+    var reverseStr = clearStr.split('').reverse().join('');
+    return clearStr === reverseStr;
 }
 
 
