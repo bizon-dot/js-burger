@@ -4,7 +4,6 @@ btn_GenerateBurger.addEventListener('click',
         // Creo un oggetto contenete il nome del panino, la sua composizione, l'utilizzo o meno del coupon 
         // e il prezzo
         let user_burger = burgerComposition();
-
         // Stampo nel DOM il banner con il prezzo 
 
 
@@ -26,8 +25,7 @@ function burgerComposition() {
         mustard: document.getElementById("mustard").checked,
         tomato: document.getElementById("tomato").checked,
         lettuce: document.getElementById("lettuce").checked,
-        ketchup: document.getElementById("ketchup").checked,
-        coupon: document.getElementById("coupon").value
+        ketchup: document.getElementById("ketchup").checked        
 
     }
 
@@ -37,6 +35,14 @@ function burgerComposition() {
             delete user_burger[ingredient];
         }
     }
+
+    // CouponCode
+    let couponCode = document.getElementById("coupon").value;
+    //Controllo che il codice coupoun sia valido nel caso salvo il flag true
+    if (isPalindrome(couponCode)) {
+       user_burger["coupon"] = true;
+    }
+
     // Calcolo e e aggiungo il prezzo del panino all'oggetto tenendo conto dell'
     //  eventuale sconto
     let price = calculatePriceBurger(user_burger);
@@ -72,12 +78,12 @@ function calculatePriceBurger(user_burger) {
 
     }
     price = (price + priceAddonBurger.priceBaseBurger) / 100;
-    // Nel caso il codice sconto sia un numerop palindromo applico uno sconto del 20%
-    if (isPalindrome(user_burger.coupon)) {
+    // Nel caso user_burger.coupon === true applico uno sconto del 20&
+    if (user_burger.coupon) {
         price = price * 0.8;
-      
     }
 
+    
     return price;
 
 }
