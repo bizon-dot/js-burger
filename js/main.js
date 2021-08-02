@@ -5,7 +5,8 @@ btn_GenerateBurger.addEventListener('click',
         // e il prezzo
         let user_burger = burgerComposition();
         // Stampo nel DOM il banner con il prezzo 
-
+        console.log(user_burger);
+        let banner_price = bannerPrice(user_burger);
 
     })
 
@@ -21,6 +22,7 @@ function burgerComposition() {
     // Popolo l'oggetto con i vari input presi dal form 
     var user_burger = {
         burgerName: document.getElementById("input-burger-name").value,
+        eggs: document.getElementById("eggs").checked,
         chesse: document.getElementById("chesse").checked,
         mustard: document.getElementById("mustard").checked,
         tomato: document.getElementById("tomato").checked,
@@ -36,18 +38,21 @@ function burgerComposition() {
         }
     }
 
+    // ?! TO FIX
     // CouponCode
-    let couponCode = document.getElementById("coupon").value;
-    //Controllo che il codice coupoun sia valido nel caso salvo il flag true
-    if (isPalindrome(couponCode)) {
-       user_burger["coupon"] = true;
-    }
+    //let couponCode = document.getElementById("coupon").value;
+
+    // Controllo che il codice coupoun sia valido nel caso salvo il flag true
+    // if (isPalindrome(couponCode)) {
+    //    user_burger["coupon"] = true;
+    // }
 
     // Calcolo e e aggiungo il prezzo del panino all'oggetto tenendo conto dell'
     //  eventuale sconto
     let price = calculatePriceBurger(user_burger);
-    user_burger["price"] = price;
-
+    
+    user_burger["price"] = (price);
+    
     return user_burger;
 }
 
@@ -61,6 +66,7 @@ function burgerComposition() {
 function calculatePriceBurger(user_burger) {
     var priceAddonBurger = {
         chesse: 40,
+        eggs: 40,
         mustard: 10,
         tomato: 20,
         lettuce: 20,
@@ -70,19 +76,23 @@ function calculatePriceBurger(user_burger) {
 
     // Calcolo il prezzo in base agli ingredienti contenuti in user_burger
     let price = 0;
+    //console.log(typeof(priceAddonBurger.tomato))
     for (let ingredient in user_burger) {
         // Escludo tutte le proprietà non numeriche dell'oggetto dalla somma 
         if (!(isNaN(user_burger[ingredient]))) {
-            price += priceAddonBurger[ingredient];
+             price +=  (priceAddonBurger[ingredient]);
+             
+
         }
 
     }
-    price = (price + priceAddonBurger.priceBaseBurger) / 100;
+    price = (price + parseInt(priceAddonBurger.priceBaseBurger)) / 100;
+    
+    // ?! TO FIX
     // Nel caso user_burger.coupon === true applico uno sconto del 20&
-    if (user_burger.coupon) {
-        price = price * 0.8;
-    }
-
+    // if (user_burger.coupon) {
+    //     price = price * 0.8;
+    // }
     
     return price;
 
@@ -95,10 +105,10 @@ function calculatePriceBurger(user_burger) {
     
 */
 
-function bannerPrice(price) {
-
+function bannerPrice(user_burger) {
+ 
     let templateBox = document.getElementById("box-price");
-    templateBox.innerHTML += `Price: ${price}`;
+    templateBox.innerHTML = `Price: ${user_burger.price}`;
     return true;
 }
 

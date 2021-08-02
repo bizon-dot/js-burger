@@ -49,27 +49,35 @@
                         <div class="col">
                             <h1>Ingredients</h1>
                         </div>
-                        
                     </div>
                     <div class="col mt-3">
                         <ul>
                             <li>
-                                <label class="form-check-label"  for="chesse">
+                                <label class="form-check-label" for="chesse">
                                     Chesse
                                 </label>
-                                <input class="form-check-input" type="checkbox" value="" id="chesse">
-                               
                             </li>
                             <li>
                                 <label class="form-check-label" for="eggs">
                                     Eggs
                                 </label>
-                                <input class="form-check-input" type="checkbox" value="" id="eggs">
                             </li>
                             <li>
                                 <label class="form-check-label" for="mustard">
                                     Mustard
                                 </label>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col">
+                        <ul>
+                            <li>
+                                <input class="form-check-input" type="checkbox" value="" id="chesse">
+                            </li>
+                            <li>
+                                <input class="form-check-input" type="checkbox" value="" id="eggs">
+                            </li>
+                            <li>
                                 <input class="form-check-input" type="checkbox" value="" id="mustard">
                             </li>
                         </ul>
@@ -81,40 +89,56 @@
                                 <label class="form-check-label" for="tomato">
                                     Tomato
                                 </label>
-                                <input class="form-check-input" type="checkbox" value=""rue" id="tomato">
                             </li>
                             <li>
                                 <label class="form-check-label" for="lettuce">
-                                   Lettuce
+                                    Lettuce
                                 </label>
-                                <input class="form-check-input" type="checkbox" value="" id="lettuce">
                             </li>
                             <li>
                                 <label class="form-check-label" for="ketchup">
                                     Ketchup
                                 </label>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="col">
+                        <ul>
+                            <li>
+                                <input class="form-check-input" type="checkbox" value="" rue" id="tomato">
+                            </li>
+                            <li>
+                                <input class="form-check-input" type="checkbox" value="" id="lettuce">
+                            </li>
+                            <li>
                                 <input class="form-check-input" type="checkbox" value="" id="ketchup">
                             </li>
                         </ul>
                     </div>
-                    <div class="row">
-                       
-                            <div class="col-auto">
-                                <label for="staticEmail2" class="visually-hidden">Discount Coupon</label>
-                                <input type="text" readonly class="form-control-plaintext" id="staticEmail2" value="Discount Coupon">
-                              </div>
-                              <div class="col-auto">
-                                <input type="text" class="form-control" id="coupon">
-                              </div>
-                       
-                     
-                    </div>
-                    <div class="row">
-                        <div class="col text-center">
-                            <button type="button" class="btn btn-warning" id="btn-generate-burger">generate</button>
+
+                    <div class="row g-3 align-items-center">
+                        <div class="col-auto">
+                            <label for="inputPassword6" class="col-form-label">Coupon</label>
                         </div>
-                     
+                        <div class="col-auto">
+                            <input type="password" id="coupon" class="form-control" aria-describedby="coupon">
+                        </div>
+                        <div class="col-auto">
+                            <span id="coupon" class="form-text">
+                                Must be palindrome
+                            </span>
+                        </div>
                     </div>
+
+
+                </div>
+                <div class="row">
+                    <div class="col text-center">
+                        <button type="button" class="btn btn-warning" id="btn-generate-burger">generate</button>
+                    </div>
+
+                </div>
 
             </form>
         </div>
@@ -122,11 +146,14 @@
         <!-- /Form - Inserisci il nome del burger -->
 
         <!-- DIV Prezzo -->
-        <div id="banner-price" class="row">
-            <div class="col" id ="box-price">
-                      </div>
+        <div class="container">
+            <div id="banner-price" class="row">
+
+                <div class="col" id="box-price">
+                </div>
+            </div>
         </div>
-        >
+
         <!-- DIV Prezzo -->
         </div>
 
