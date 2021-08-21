@@ -40,10 +40,12 @@
             <form class="row mt-3" id="form-burger-name">
                 <div class="mt-3">
                     <div class="col-auto">
-                        <input type="text" class="form-control" id="input-burger-name" placeholder="Name your burger">
+                        <input type="text" class="form-control no-outline" id="input-burger-name" placeholder="Name your burger">
                     </div>
                 </div>
                 <!-- /Form - Inserisci il nome del burger -->
+                <!-- Ingredienti -->
+                <div class="container-checkbox">
                 <div class="row p-3">
                     <div class="row">
                         <div class="col">
@@ -72,13 +74,13 @@
                     <div class="col">
                         <ul>
                             <li>
-                                <input class="form-check-input" type="checkbox" value="" id="chesse">
+                                <input class="form-check-input checkmark" type="checkbox" value="" id="chesse">
                             </li>
                             <li>
-                                <input class="form-check-input" type="checkbox" value="" id="eggs">
+                                <input class="form-check-input checkmark" type="checkbox" value="" id="eggs">
                             </li>
                             <li>
-                                <input class="form-check-input" type="checkbox" value="" id="mustard">
+                                <input class="form-check-input checkmark" type="checkbox" value="" id="mustard">
                             </li>
                         </ul>
                     </div>
@@ -106,31 +108,31 @@
                     <div class="col">
                         <ul>
                             <li>
-                                <input class="form-check-input" type="checkbox" value="" rue" id="tomato">
+                                <input class="form-check-input checkmark" type="checkbox" value="" rue" id="tomato">
                             </li>
                             <li>
-                                <input class="form-check-input" type="checkbox" value="" id="lettuce">
+                                <input class="form-check-input checkmark" type="checkbox" value="" id="lettuce">
                             </li>
                             <li>
-                                <input class="form-check-input" type="checkbox" value="" id="ketchup">
+                                <input class="form-check-input checkmark" type="checkbox" value="" id="ketchup">
                             </li>
                         </ul>
                     </div>
-
+                </div>
+                <!-- Fine ingredienti -->
                     <div class="row g-3 align-items-center">
                         <div class="col-auto">
                             <label for="inputPassword6" class="col-form-label">Coupon</label>
                         </div>
                         <div class="col-auto">
-                            <input type="password" id="coupon" class="form-control" aria-describedby="coupon">
+                            <input type="text" id="coupon" class="form-control" aria-describedby="coupon">
                         </div>
                         <div class="col-auto">
                             <span id="coupon" class="form-text">
-                                Must be palindrome
+                               Letter + Fibonacci
                             </span>
                         </div>
                     </div>
-
 
                 </div>
                 <div class="row">
@@ -146,10 +148,15 @@
         <!-- /Form - Inserisci il nome del burger -->
 
         <!-- DIV Prezzo -->
-        <div class="container">
+        <div class="container-fluid m-3 " >
             <div id="banner-price" class="row">
 
-                <div class="col" id="box-price">
+                <div class="col">
+                    <div class="justify-content-start center p-3 bg-red ghost big-white-text" id="box-price">
+                      
+                    </div>
+                    
+                    
                 </div>
             </div>
         </div>

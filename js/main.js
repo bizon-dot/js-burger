@@ -77,7 +77,7 @@ function calculatePriceBurger(user_burger) {
 
     for (let ingredient in user_burger) {
         // Escludo tutte le proprietà non numeriche dell'oggetto dalla somma 
-        if (!(isNaN(user_burger[ingredient])) && !(user_burger[ingredient])) {
+        if (!(isNaN(user_burger[ingredient])) && !(user_burger[ingredient] ="coupon")) {
             price +=  (priceAddonBurger[ingredient]);
             
         }
