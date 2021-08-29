@@ -43,7 +43,7 @@ function burgerComposition() {
     // Controllo che il codice coupoun sia valido nel caso salvo il flag true
     if (isCoupon(couponCode)) {
        user_burger["coupon"] = true;
-    }
+    } 
 
     // Calcolo e e aggiungo il prezzo del panino all'oggetto tenendo conto dell'
     //  eventuale sconto
@@ -69,6 +69,7 @@ function calculatePriceBurger(user_burger) {
         tomato: 20,
         lettuce: 20,
         ketchup: 10,
+        coupon: 0,
         priceBaseBurger: 320,
     }
 
@@ -77,7 +78,7 @@ function calculatePriceBurger(user_burger) {
 
     for (let ingredient in user_burger) {
         // Escludo tutte le proprietà non numeriche dell'oggetto dalla somma 
-        if (!(isNaN(user_burger[ingredient])) && !(user_burger[ingredient] ="coupon")) {
+        if (!(isNaN(user_burger[ingredient]))) {
             price +=  (priceAddonBurger[ingredient]);
             
         }
@@ -105,7 +106,7 @@ function bannerPrice(user_burger) {
  
     let templateBox = document.getElementById("box-price");
     templateBox.innerHTML = `Price: ${user_burger.price} $`;
-    templateBox.classList.remove("ghost");
+    templateBox.classList.remove("d-none");
     return true;
 }
 
