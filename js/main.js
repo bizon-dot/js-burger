@@ -3,6 +3,7 @@ btn_GenerateBurger.addEventListener('click',
     function () {
         // Creo un oggetto contenete il nome del panino, la sua composizione, l'utilizzo o meno del coupon 
         // e il prezzo
+        
         let user_burger = burgerComposition();
         // Stampo nel DOM il banner con il prezzo 
         let banner_price = bannerPrice(user_burger);
@@ -18,9 +19,19 @@ btn_GenerateBurger.addEventListener('click',
 */
 
 function burgerComposition() {
+    // Validazione del campo user_burger
+    var burgerName = document.getElementById("input-burger-name").value;
+    if (burgerName == "") {
+    const { value: burgerName } =  Swal.fire({
+        input: 'text',
+        inputLabel: 'Inserisci il nome del panino',
+        inputPlaceholder: 'Nome del panino'
+      })
+    
+    }
     // Popolo l'oggetto con i vari input presi dal form 
     var user_burger = {
-        burgerName: document.getElementById("input-burger-name").value,
+        burgerName: burgerName,
         eggs: document.getElementById("eggs").checked,
         chesse: document.getElementById("chesse").checked,
         mustard: document.getElementById("mustard").checked,
@@ -50,7 +61,7 @@ function burgerComposition() {
     let price = calculatePriceBurger(user_burger);
     
     user_burger["price"] = price;
-    console.log(user_burger);
+   
     return user_burger;
 }
 
@@ -120,6 +131,7 @@ function isCoupon(code){
     let validCoupon = ["A112358", "B112358", "C112358", "D112358"];
     return validCoupon.includes(code) ? true : false;
 }
+
 
 
 /*  
