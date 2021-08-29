@@ -21,28 +21,7 @@ ul {
     font-weight: bolder;
 }
 
-/* Nascondo le checkbox di default */
-/* .container-checkbox input {
-    position: absolute;
-    opacity: 0;
-    cursor: pointer;
-    height: 0;
-    width: 0;
-}
 
-.checkmark {
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 25px;
-    width: 25px;
-    background-color: #D33359;
-  } */
-
-/* 
-.no-outline:focus {
-    outline: none;
-  } */
 /* /Generali */
 
 /*  Navbar */
@@ -62,8 +41,9 @@ ul {
 
 /*  /Navbar */
 
-/* Form - Name Burger */
+/* Form */
 
+/* Input del nome */
 input[type=text] {
     border: 0;
 }
@@ -73,5 +53,13 @@ input[type=text] {
     font-size: 25px;
 
 }
+/* /Input del nome */
 
-/* /Form - Name Burger */
+/* Cambio lo stile quando seleziono gli ingredienti */
+
+.form-check-input:checked[type="checkbox"]{
+    background-color: #D33359;
+	border: none;
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3e%3cpath fill='' stroke='black' stroke-linecap='round' stroke-linejoin='round' stroke-width='3' d='M6 10l3 3l6-6'/%3e%3c/svg%3e") !important;
+}
+/* /Form*/
